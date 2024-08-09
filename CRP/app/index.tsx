@@ -1,18 +1,42 @@
 import React, { useState } from "react";
-import { Text, TextInput, View, Button, TouchableOpacity, StyleSheet } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { FIREBASE_AUTH } from "./FirebaseConfig";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { router } from "expo-router";
 
 export default function Index() {
   const navigation = useNavigation(); // Use useNavigation hook
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // Handle login logic here
     console.log("Login button pressed");
+    try {
+      const user = await signInWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
+      );
+      if (user) router.replace("/(tabs)");
+    } catch (error: any) {
+      console.log(error);
+      alert("Sign in failed: " + error.message);
+    }
   };
 
-  const handleRegister = () => {
+  const navigateToRegister = () => {
     // Navigate to the registration page
     navigation.navigate("register");
   };
@@ -35,7 +59,7 @@ export default function Index() {
         secureTextEntry
       />
       <Button title="Login" onPress={handleLogin} />
-      <TouchableOpacity onPress={handleRegister}>
+      <TouchableOpacity onPress={navigateToRegister}>
         <Text style={styles.registerText}>Don't have an account? Register</Text>
       </TouchableOpacity>
     </View>
@@ -48,7 +72,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
-    backgroundColor: "#0d47a1"
+    backgroundColor: "#0d47a1",
   },
   title: {
     fontSize: 24,
@@ -57,9 +81,9 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1,
-    width: '100%',
+    width: "100%",
     marginBottom: 12,
     paddingLeft: 8,
     color: "#fff",

@@ -2,18 +2,32 @@ import React, { useState } from "react";
 import { Text, TextInput, View, Button, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from '@react-navigation/native';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FIREBASE_AUTH } from "./FirebaseConfig";
+import { router } from "expo-router";
 
 export default function Register() {
   const navigation = useNavigation(); 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [major, setMajor] = useState("");
   const [ethnicity, setEthnicity] = useState("");
   const [gender, setGender] = useState("");
 
-  const handleRegister = () => {
-    console.log("Register button pressed");
+  const handleRegister = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        FIREBASE_AUTH,
+        email,
+        password
+      );
+      if (user) router.replace("/(tabs)");
+    } catch (error: any) {
+      console.log(error);
+      alert("Sign in failed: " + error.message);
+    }
   };
 
   const handleBackPress = () => {
@@ -48,6 +62,14 @@ export default function Register() {
         onChangeText={setEmail}
         autoCapitalize="none"
         keyboardType="email-address"
+        placeholderTextColor="#fff" // White text color
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        autoCapitalize="none"
         placeholderTextColor="#fff" // White text color
       />
       <TextInput
