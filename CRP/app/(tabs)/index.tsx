@@ -1,20 +1,13 @@
-import React, { useState } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  Button,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Text, StyleSheet, ScrollView, Image } from "react-native";
 
 export default function Home() {
-  const navigation = useNavigation();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        style={styles.tinyLogo}
+        source={require("../../assets/images/CRP_logo.png")}
+      />
       <Text style={styles.title}>Home</Text>
     </ScrollView>
   );
@@ -65,5 +58,9 @@ const styles = StyleSheet.create({
   },
   picker: {
     color: "#000", // Black text color for picker
+  },
+  tinyLogo: {
+    width: 100,
+    height: 50,
   },
 });

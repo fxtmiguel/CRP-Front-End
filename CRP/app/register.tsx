@@ -40,14 +40,11 @@ export default function Register() {
 
   const handleBackPress = () => {
     // Navigate back to the index page
-    router.replace("index");
+    router.replace("/");
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <TouchableOpacity onPress={handleBackPress} style={styles.backButton}>
-        <Text style={styles.backButtonText}>Back</Text>
-      </TouchableOpacity>
       <Text style={styles.title}>Register</Text>
       <TextInput
         style={styles.input}
@@ -118,6 +115,9 @@ export default function Register() {
           <Picker.Item label="Other" value="other" />
         </Picker>
       </View>
+      <TouchableOpacity onPress={handleBackPress}>
+        <Text style={styles.backButton}>Already have an account? Login</Text>
+      </TouchableOpacity>
       <Button title="Register" onPress={handleRegister} />
     </ScrollView>
   );
@@ -134,14 +134,13 @@ const styles = StyleSheet.create({
   backButton: {
     alignSelf: "flex-start",
     marginBottom: 16,
-  },
-  backButtonText: {
-    color: "#fff", // back button text
-    fontSize: 16,
+    color: "yellow",
+    textDecorationLine: "underline",
   },
   title: {
     fontSize: 24,
     marginBottom: 24,
+    marginTop: 45,
     color: "#fff", // title
   },
   input: {

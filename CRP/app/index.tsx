@@ -45,6 +45,7 @@ export default function Index() {
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor="#fff"
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
@@ -52,6 +53,7 @@ export default function Index() {
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor="#fff"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -84,7 +86,8 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 12,
     paddingLeft: 8,
-    color: "#fff",
+    color: "#fff", // White text color for input
+    backgroundColor: "#333", // Dark background for inputs for better visibility
   },
   registerText: {
     marginTop: 20,

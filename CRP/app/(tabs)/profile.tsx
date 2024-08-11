@@ -5,7 +5,8 @@ import { getAuth } from "firebase/auth";
 
 export default function TabOneScreen() {
   getAuth().onAuthStateChanged((user) => {
-    if (!user) router.replace("/");
+    // Change to redirect to login page
+    if (!user) router.replace("register");
   });
 
   return (
