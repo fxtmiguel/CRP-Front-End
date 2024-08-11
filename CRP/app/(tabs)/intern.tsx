@@ -10,12 +10,12 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Home() {
+export default function Intern() {
   const navigation = useNavigation();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>Intern</Text>
     </ScrollView>
   );
 }

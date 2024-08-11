@@ -5,6 +5,9 @@ import { Pressable } from "react-native";
 
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import Entypo from "@expo/vector-icons/Entypo";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -29,8 +32,40 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Sign Out",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: "Learn",
+          tabBarIcon: ({ color }) => (
+            <Entypo name="open-book" size={24} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="events"
+        options={{
+          title: "Events",
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="calendar" size={24} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="intern"
+        options={{
+          title: "Intern",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="graduation-cap" size={24} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "You",
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="person-circle-outline" size={24} color={color} />
+          ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -45,27 +80,6 @@ export default function TabLayout() {
               </Pressable>
             </Link>
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: "Database",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="three"
-        options={{
-          title: "Storage",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="four"
-        options={{
-          title: "Functions",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
     </Tabs>
