@@ -9,13 +9,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { useNavigation } from "@react-navigation/native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FIREBASE_AUTH } from "./FirebaseConfig";
 import { router } from "expo-router";
 
 export default function Register() {
-  const navigation = useNavigation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,7 +29,10 @@ export default function Register() {
         email,
         password
       );
-      if (user) router.replace("/(tabs)");
+      if (user) {
+        router.replace("/(tabs)");
+        // Create document in users
+      }
     } catch (error: any) {
       console.log(error);
       alert("Sign in failed: " + error.message);
