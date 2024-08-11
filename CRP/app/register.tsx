@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { Text, TextInput, View, Button, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
-import { Picker } from '@react-native-picker/picker';
-import { useNavigation } from '@react-navigation/native';
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { useNavigation } from "@react-navigation/native";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { FIREBASE_AUTH } from "./FirebaseConfig";
 import { router } from "expo-router";
 
 export default function Register() {
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,7 +40,7 @@ export default function Register() {
 
   const handleBackPress = () => {
     // Navigate back to the index page
-    navigation.navigate("index");
+    router.replace("index");
   };
 
   return (
@@ -46,14 +54,14 @@ export default function Register() {
         placeholder="First Name"
         value={firstName}
         onChangeText={setFirstName}
-        placeholderTextColor="#fff" 
+        placeholderTextColor="#fff"
       />
       <TextInput
         style={styles.input}
         placeholder="Last Name"
         value={lastName}
         onChangeText={setLastName}
-        placeholderTextColor="#fff" 
+        placeholderTextColor="#fff"
       />
       <TextInput
         style={styles.input}
@@ -77,7 +85,7 @@ export default function Register() {
         placeholder="Major"
         value={major}
         onChangeText={setMajor}
-        placeholderTextColor="#fff" 
+        placeholderTextColor="#fff"
       />
       <Text style={styles.label}>Ethnicity</Text>
       <View style={styles.pickerContainer}>
@@ -88,7 +96,10 @@ export default function Register() {
         >
           <Picker.Item label="Select Ethnicity" value="" />
           <Picker.Item label="Asian" value="asian" />
-          <Picker.Item label="Black or African American" value="black_or_african_american" />
+          <Picker.Item
+            label="Black or African American"
+            value="black_or_african_american"
+          />
           <Picker.Item label="Hispanic or Latino" value="hispanic_or_latino" />
           <Picker.Item label="White" value="white" />
           <Picker.Item label="Other" value="other" />
@@ -135,9 +146,9 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1,
-    width: '100%',
+    width: "100%",
     marginBottom: 12,
     paddingLeft: 8,
     color: "#fff", // White text color for input
@@ -150,7 +161,7 @@ const styles = StyleSheet.create({
     color: "#fff", // White color for labels
   },
   pickerContainer: {
-    width: '100%',
+    width: "100%",
     backgroundColor: "#fff", // White background for picker container
     borderRadius: 4,
     marginBottom: 12,

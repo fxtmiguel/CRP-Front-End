@@ -36,7 +36,7 @@ export default function Index() {
 
   const navigateToRegister = () => {
     // Navigate to the registration page
-    navigation.navigate("register");
+    router.replace("register");
   };
 
   return (
