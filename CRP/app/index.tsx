@@ -9,10 +9,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FIREBASE_AUTH } from "./FirebaseConfig";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { router } from "expo-router";
 
 export default function Index() {
@@ -29,6 +26,7 @@ export default function Index() {
         email,
         password
       );
+      // Navigate to the home page
       if (user) router.replace("/(tabs)");
     } catch (error: any) {
       console.log(error);
