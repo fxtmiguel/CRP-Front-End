@@ -1,25 +1,5 @@
-import { router } from "expo-router";
-import {
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import { View } from "react-native";
-
-const NavWithin = () => {
-  return (
-    <View>
-      <TouchableOpacity onPress={() => router.replace("blog")}>
-        <Text style={styles.registerText}>Blog</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => router.replace("resourses")}>
-        <Text style={styles.registerText}>Recourses</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
+import { Text, StyleSheet, ScrollView, Image } from "react-native";
+import { TopNav } from "@/components/TopNav";
 
 export default function Home() {
   return (
@@ -28,7 +8,7 @@ export default function Home() {
         style={styles.tinyLogo}
         source={require("../../assets/images/CRP_logo.png")}
       />
-      <NavWithin />
+      <TopNav link1="Blog" link2="Resources" />
       <Image
         style={styles.blogPhoto}
         source={require("../../assets/images/blog1.png")}
@@ -100,10 +80,5 @@ const styles = StyleSheet.create({
   blogPhoto: {
     width: 347,
     height: 151,
-  },
-  registerText: {
-    marginTop: 20,
-    color: "yellow",
-    textDecorationLine: "underline",
   },
 });

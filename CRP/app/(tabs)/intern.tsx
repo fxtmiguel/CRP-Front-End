@@ -1,13 +1,4 @@
-import React, { useState } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  Button,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { Text, StyleSheet, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Intern() {
