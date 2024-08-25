@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, View, Image } from "react-native";
 import { FIREBASE_AUTH } from "../FirebaseConfig";
 import { router } from "expo-router";
 import { getAuth } from "firebase/auth";
@@ -11,7 +11,18 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Sign Out</Text>
+      <Text style={styles.subtitle}>Your Upcoming Events</Text>
+      <Image
+        style={styles.profilePhoto}
+        source={require("../../assets/images/profilePhoto.png")}
+      />
+      <Text style={styles.subtitle}>About</Text>
+      <Text style={styles.label}>Name</Text>
+      <Text style={styles.label}>Ryan Schmitt</Text>
+      <Text style={styles.label}>Email</Text>
+      <Text style={styles.label}>rtsch@gmail.com</Text>
+      <Text style={styles.label}>Major</Text>
+      <Text style={styles.label}>Computer Science</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => FIREBASE_AUTH.signOut()}
@@ -29,11 +40,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FAFAFA", // A softer white for a modern, minimalist background
   },
-  title: {
-    fontSize: 28, // A bit larger for a more striking appearance
-    fontWeight: "800", // Extra bold for emphasis
-    color: "#1A237E", // A deep indigo for a sophisticated, modern look
-    marginBottom: 40, // Increased space for a more airy, open feel
+  subtitle: {
+    fontSize: 25,
+    fontWeight: "800",
+    color: "#1A237E",
+    marginBottom: 40,
+  },
+  profilePhoto: {
+    width: 150,
+    height: 150,
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 20,
+    fontWeight: "800",
+    color: "black",
+    marginBottom: 15,
   },
   separator: {
     marginVertical: 30,
