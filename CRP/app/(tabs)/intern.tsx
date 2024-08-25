@@ -1,12 +1,28 @@
-import { Text, StyleSheet, ScrollView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Text, StyleSheet, ScrollView, Image } from "react-native";
+import { TopNav } from "@/components/TopNav";
 
-export default function Intern() {
-  const navigation = useNavigation();
-
+export default function Events() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Intern</Text>
+      <Image
+        style={styles.tinyLogo}
+        source={require("../../assets/images/CRP_logo.png")}
+      />
+      <TopNav link1="Internship List" link2="About Internship" />
+      <Image
+        style={styles.blogPhoto}
+        source={require("../../assets/images/intern1.png")}
+      />
+      <Text style={styles.bodyText}>
+        The effectiveness of an internship on professional prospects
+      </Text>
+      <Image
+        style={styles.blogPhoto}
+        source={require("../../assets/images/intern2.png")}
+      />
+      <Text style={styles.bodyText}>
+        The effectiveness of an internship on professional prospects
+      </Text>
     </ScrollView>
   );
 }
@@ -17,7 +33,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
-    backgroundColor: "#0d47a1", // Dark blue background
+    backgroundColor: "grey",
   },
   backButton: {
     alignSelf: "flex-start",
@@ -32,15 +48,10 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     color: "#fff", // title
   },
-  input: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    width: "100%",
-    marginBottom: 12,
-    paddingLeft: 8,
-    color: "#fff", // White text color for input
-    backgroundColor: "#333", // Dark background for inputs for better visibility
+  bodyText: {
+    fontSize: 17,
+    marginBottom: 24,
+    color: "#fff",
   },
   label: {
     alignSelf: "flex-start",
@@ -48,13 +59,15 @@ const styles = StyleSheet.create({
     marginTop: 12,
     color: "#fff", // White color for labels
   },
-  pickerContainer: {
-    width: "100%",
-    backgroundColor: "#fff", // White background for picker container
-    borderRadius: 4,
-    marginBottom: 12,
+  tinyLogo: {
+    width: 100,
+    height: 50,
+    position: "absolute",
+    top: 60,
+    alignContent: "center",
   },
-  picker: {
-    color: "#000", // Black text color for picker
+  blogPhoto: {
+    width: 345,
+    height: 134,
   },
 });
