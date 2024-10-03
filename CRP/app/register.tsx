@@ -30,7 +30,7 @@ export default function Register() {
         password
       );
       if (user) {
-        router.replace("/(tabs)");
+        router.replace("/");
         // Create document in users
       }
     } catch (error: any) {
