@@ -2,12 +2,29 @@ import { StyleSheet, TouchableOpacity, Text, View, Image } from "react-native";
 import { FIREBASE_AUTH } from "../FirebaseConfig";
 import { router } from "expo-router";
 import { getAuth } from "firebase/auth";
+import {db} from "../FirebaseConfig";
+import {doc, getDocs, collection} from "firebase/firestore"
+import React, { useState } from "react";
 
-export default function TabOneScreen() {
+export default async function TabOneScreen() {
+  const [userInfo, setUserInfo] = useState<any | undefined>(null);
   getAuth().onAuthStateChanged((user) => {
     // Change to redirect to login page
     if (!user) router.replace("/..");
   });
+
+  async function printCollection() {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'users'));
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, '=>', doc.data());
+      });
+    } catch (error) {
+      console.error("Error getting documents: ", error);
+    }
+  }
+  
+  printCollection();
 
   return (
     <View style={styles.container}>
